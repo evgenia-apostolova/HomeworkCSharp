@@ -6,20 +6,31 @@
 32679 -> 6
 */
 
-int Number = new Random().Next(1, 1500);
-Console.WriteLine($"Given number: {Number}");
+int Number = new Random().Next(1, 100000);
+Console.WriteLine($"Random number: {Number}");
 
-if (Number / 100 < 1) 
+int counter = Number;
+int place = 0;
+while (counter != 0)
 {
-Console.WriteLine("There is no third digit");
+place++;
+counter = counter/10;
+}
+int[] array = new int[place];
+place = 0;
+while (Number > 0)
+{
+array[place] = Number % 10;
+Number = Number / 10;
+place++;
+}
+if (array.Length >= 3)
+{
+Console.WriteLine($"Third digit is {array[array.Length - 3]}");
 }
 else
 {
-    if (Number / 1000 > 0) 
-    
-    Console.WriteLine($"Third digit of {Number} is digit {Number / 10 % 10}");
-
-    else Console.WriteLine($"Third digit of {Number} is digit {Number % 10}");
+Console.WriteLine("There is no third digit");
 }
 
 Console.WriteLine();
